@@ -54,8 +54,7 @@ def predict():
         
         return render_template(
             'index.html',
-            prediction=str(pred)
-            # prediction="Subscribed" if prediction == 1 else "Not Subscribed"
+            prediction="Subscribed" if pred == 1 else "Not Subscribed"
         )
 
 if __name__ == '__main__':
