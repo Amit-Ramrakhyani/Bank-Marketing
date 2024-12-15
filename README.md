@@ -1,6 +1,6 @@
 # Bank Marketing using Machine Learning
 
-Dataset: [Bank Marketing Data Set](https://archive.ics.uci.edu/dataset/222/bank+marketing)
+Dataset: [Bank Marketing Data Set](https://archive.ics.uci.edu/dataset/222/bank+marketing){:target="_blank"}
 
 The classification goal is to predict if the client will subscribe a term deposit (variable y).
 
