@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Campaign Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .result p {
+            margin: 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Marketing Campaign Predictor</h1>
+        <form method="POST" action="/predict">
+            <!-- Input fields for user data -->
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="job">Job</label>
+                <select name="job" id="job" required>
+                    <option value="admin.">Admin</option>
+                    <option value="blue-collar">Blue-Collar</option>
+                    <option value="entrepreneur">Entrepreneur</option>
+                    <option value="housemaid">Housemaid</option>
+                    <option value="management">Management</option>
+                    <option value="retired">Retired</option>
+                    <option value="self-employed">Self-Employed</option>
+                    <option value="services">Services</option>
+                    <option value="student">Student</option>
+                    <option value="technician">Technician</option>
+                    <option value="unemployed">Unemployed</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="marital">Marital Status</label>
+                <select name="marital" id="marital" required>
+                    <option value="divorced">Divorced</option>
+                    <option value="married">Married</option>
+                    <option value="single">Single</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="education">Education</label>
+                <select name="education" id="education" required>
+                    <option value="basic.4y">Basic 4y</option>
+                    <option value="basic.6y">Basic 6y</option>
+                    <option value="basic.9y">Basic 9y</option>
+                    <option value="high.school">High School</option>
+                    <option value="illiterate">Illiterate</option>
+                    <option value="professional.course">Professional Course</option>
+                    <option value="university.degree">University Degree</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="default">Has Credit in Default?</label>
+                <select name="default" id="default" required>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="housing">Has Housing Loan?</label>
+                <select name="housing" id="housing" required>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="loan">Has Personal Loan?</label>
+                <select name="loan" id="loan" required>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact Communication Type</label>
+                <select name="contact" id="contact" required>
+                    <option value="cellular">Cellular</option>
+                    <option value="telephone">Telephone</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="month">Last Contact Month</label>
+                <select name="month" id="month" required>
+                    <option value="jan">January</option>
+                    <option value="feb">February</option>
+                    <option value="mar">March</option>
+                    <option value="apr">April</option>
+                    <option value="may">May</option>
+                    <option value="jun">June</option>
+                    <option value="jul">July</option>
+                    <option value="aug">August</option>
+                    <option value="sep">September</option>
+                    <option value="oct">October</option>
+                    <option value="nov">November</option>
+                    <option value="dec">December</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="day_of_week">Last Contact Day of the Week</label>
+                <select name="day_of_week" id="day_of_week" required>
+                    <option value="mon">Monday</option>
+                    <option value="tue">Tuesday</option>
+                    <option value="wed">Wednesday</option>
+                    <option value="thu">Thursday</option>
+                    <option value="fri">Friday</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Last Contact Duration (seconds)</label>
+                <input type="number" name="duration" id="duration" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="campaign">Number of Contacts in Campaign</label>
+                <input type="number" name="campaign" id="campaign" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pdays">Days Since Last Contact</label>
+                <input type="number" name="pdays" id="pdays" required>
+            </div>
+
+            <div class="form-group">
+                <label for="previous">Number of Previous Contacts</label>
+                <input type="number" name="previous" id="previous" required>
+            </div>
+
+            <div class="form-group">
+                <label for="poutcome">Previous Campaign Outcome</label>
+                <select name="poutcome" id="poutcome" required>
+                    <option value="failure">Failure</option>
+                    <option value="nonexistent">Nonexistent</option>
+                    <option value="success">Success</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="emp.var.rate">Employment Variation Rate</label>
+                <input type="number" name="emp.var.rate" id="emp.var.rate" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cons.price.idx">Consumer Price Index</label>
+                <input type="number" name="cons.price.idx" id="cons.price.idx" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cons.conf.idx">Consumer Confidence Index</label>
+                <input type="number" name="cons.conf.idx" id="cons.conf.idx" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="euribor3m">Euribor 3-Month Rate</label>
+                <input type="number" name="euribor3m" id="euribor3m" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nr.employed">Number of Employees</label>
+                <input type="number" name="nr.employed" id="nr.employed" step="0.1" required>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <p><strong>Prediction:</strong> {{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
