@@ -50,7 +50,14 @@ The best model was selected based on performance on the validation set. The Grad
 ## 6. Model Evaluation
 The final model was evaluated on the test set, achieving an AUC of 0.792, indicating good predictive performance.
 
+| Metric     | Training | Validation | Testing |
+|------------|----------|------------|---------|
+| Accuracy   | 0.756    | 0.755      | 0.743   |
+| F1 Score   | 0.726    | 0.726      | 0.707   |
+| AUC        | 0.817    | 0.797      | 0.792   |
+
 ![ROC Curve](data/results/roc_curve.png)
+
 
 ## 7. Future Improvements
 Potential future improvements include:
